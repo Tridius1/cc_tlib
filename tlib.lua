@@ -4,6 +4,25 @@
 
 -- Internal
 
+function update()
+	term.clear()
+	term.setCursorPos(0, 0)
+	print("Updating tlib")
+
+	download = {name = "tlib.lua", url = "https://raw.githubusercontent.com/Tridius1/cc_tlib/main/tlib.lua"}
+
+	request = http.get("https://raw.githubusercontent.com/Tridius1/cc_tlib/main/tlib.lua")
+	data = request.readAll()
+
+	if fs.exists(download.name) then
+		fs.delete(download.name)
+	end
+	file = fs.open(download.name, "w")
+	file.write(data)
+	file.close()
+	print("Done, a restart is recomended")
+end
+
 function getPeri(pType)
 	for _, side in ipairs(peripheral.getNames()) do
 		if peripheral.getType(side) == pType then
