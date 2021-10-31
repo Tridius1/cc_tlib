@@ -23,6 +23,24 @@ function update()
 	print("Done, a restart is recomended")
 end
 
+function formatRF(rawRF)
+	local names = {
+		"Thousand",
+		"Million",
+		"Billion",
+		"Trillion",
+		"Quadrillion"
+	}
+
+	local digits = math.floor(math.log10(rawRF)) -- actually # digits - 1
+	local index = math.floor(digits / 3)
+	local fOut = math.floor(rawRF / 10^(digits - 3)) -- 2 significant figures
+	fOut = fOut/100 .. " " .. names[index]
+	return fOut
+end
+
+
+
 function getPeri(pType)
 	for _, side in ipairs(peripheral.getNames()) do
 		if peripheral.getType(side) == pType then
