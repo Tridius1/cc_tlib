@@ -253,7 +253,7 @@ end
 modTable = {
 	timestamp = timestamp,
 	timestampObj = timestampObj,
-	realizeTimestamp = realizeTimestamp
+	realizeTimestamp = realizeTimestamp,
 	datetime = datetime
 }
 
