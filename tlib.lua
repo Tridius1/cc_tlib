@@ -217,7 +217,7 @@ end
 local function loadModules(lib)
 	modules = {}
 	for k,v in pairs(lib) do
-		for n,f in pairs(require(v)) do
+		for n,f in pairs(require("lib."..k)) do
 			table.insert(modules, n, f)
 		end
 	end
