@@ -5,13 +5,6 @@
 -- Internal
 
 -- Load subjects - dont?
---[[
-local time = require("lib/time.lua")
-local uuid = require("lib/uuid.lua")
-local move = require("lib/move.lua")
-local monitor = require("lib/monitor.lua")
-local gps = require("lib/gps.lua")
-]]
 
 local libTable = {
 	time = "lib/time.lua",
@@ -73,7 +66,7 @@ function update()
 		file.close()
 	end
 
-	print("Done, a restart is recomended")
+	print("Done")
 end
 
 function formatNum(rawRF)
@@ -233,7 +226,7 @@ if (arg[1] == "u" or arg[1] == "update") then
 	update()
 end
 
-local success, modules = pcall(loadModules(libTable))
+local success, modules = pcall(loadModules, libTable)
 if success then
 	return modules
 else
