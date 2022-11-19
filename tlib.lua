@@ -217,12 +217,9 @@ local function loadModules(lib)
 	return modules
 end
 
-
-if (old_v) then
-	update()
-end
-
 if (arg[1] == "u" or arg[1] == "update") then
+	update()
+elseif (old_v) then
 	update()
 end
 
@@ -230,7 +227,6 @@ local success, modules = pcall(loadModules, libTable)
 if success then
 	return modules
 else
-	print("Error loading tlib libraries, updating")
-	update()
+	print("Error loading tlib libraries, update required")
 	return
 end
