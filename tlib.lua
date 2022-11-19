@@ -56,7 +56,7 @@ function update()
 	-- library files
 	for k,v in pairs(libTable) do
 		print("Downloading "..k.." module to "..v)
-		download = {name = v, url = "https://raw.githubusercontent.com/Tridius1/cc_tlib/main/"..v}
+		download = {name = v, url = "https://raw.githubusercontent.com/Tridius1/cc_tlib/main/lib/"..v}
 		request, e = http.get(download.url)
 		if (request == nil) then
 			print("http get failed: "..k)
