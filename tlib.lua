@@ -20,6 +20,7 @@ else
 	--load er up
 	local mfile = fs.open("lib/manifest.json", "r")
 	libTable = textutils.unserializeJSON(mfile.readAll())
+	mfile.close()
 end
 
 function update()
@@ -45,7 +46,13 @@ function update()
 		fs.makeDir("lib")
 	end
 	download = {name = "manifest.json", url = "https://raw.githubusercontent.com/Tridius1/cc_tlib/main/lib/manifest.json"}
-	request = http.get(download.url)
+	request, e = http.get(download.url)
+
+	if (request == nil) then
+		print("http get failed")
+		error(e)
+	end
+
 	libTable = textutils.unserializeJSON(request.readAll())
 	-- library files
 	for k,v in pairs(libTable) do
