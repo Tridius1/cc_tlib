@@ -1,16 +1,6 @@
 --Movement
 
-
--- change enviroment so globals ca be rerturned
-local M = {}
-if setfenv then
-	setfenv(1, M) -- for 5.1
-else
-	_ENV = M -- for 5.2
-end
-
-
-function go_fwd(x)
+local function go_fwd(x)
 	for i = 1, x, 1 do
 		local trys = 0
 		while not turtle.forward() do
@@ -33,7 +23,7 @@ function go_fwd(x)
 end
 
 
-function rect(x, y)
+local function rect(x, y)
 	-- x if forward, y is right
 	-- -x is backwards, -y is left
 	
@@ -76,7 +66,7 @@ function rect(x, y)
 end
 
 
-function empty()
+local function empty()
 	local success = true
 	for i = 1, 16, 1 do
 		turtle.select(i)
@@ -89,7 +79,7 @@ function empty()
 end
 
 
-function emptyUp()
+local function emptyUp()
 	local success = true
 	for i = 1, 16, 1 do
 		turtle.select(i)
@@ -102,7 +92,7 @@ function emptyUp()
 end
 
 
-function emptyDown()
+local function emptyDown()
 	local success = true
 	for i = 1, 16, 1 do
 		turtle.select(i)
@@ -114,5 +104,12 @@ function emptyDown()
 	return success
 end
 
--- return enviroment
-return M
+-- return module
+local modTable = {
+	go = go_fwd,
+	rect = rect,
+	empty = empty,
+	emptyUp = emptyUp,
+	emptyDown = emptyDown
+}
+return modTable
