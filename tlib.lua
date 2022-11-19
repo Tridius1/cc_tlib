@@ -47,9 +47,8 @@ function update()
 	end
 	download = {name = "manifest.json", url = "https://raw.githubusercontent.com/Tridius1/cc_tlib/main/lib/manifest.json"}
 	request, e = http.get(download.url)
-
 	if (request == nil) then
-		print("http get failed")
+		print("http get failed: manifest")
 		error(e)
 	end
 
@@ -58,7 +57,11 @@ function update()
 	for k,v in pairs(libTable) do
 		print("Downloading "..k.." module to "..v)
 		download = {name = v, url = "https://raw.githubusercontent.com/Tridius1/cc_tlib/main/"..v}
-		request = http.get(download.url)
+		request, e = http.get(download.url)
+		if (request == nil) then
+			print("http get failed: "..k)
+			error(e)
+		end
 		data = request.readAll()
 		if fs.exists(download.name) then
 			fs.delete(download.name)
