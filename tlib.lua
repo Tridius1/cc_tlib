@@ -5,14 +5,8 @@
 -- Internal
 
 
-local libTable = {
-	time = "lib/time.lua",
-	uuid = "lib/uuid.lua",
-	move = "lib/move.lua",
-	monitor = "lib/monitor.lua",
-	gps = "lib/gps.lua"
-}
--- Create 
+local libTable = {}
+-- Installed?
 old_v = false
 if not (fs.exists("lib")) then
 	fs.makeDir("lib")
@@ -20,10 +14,12 @@ if not (fs.exists("lib")) then
 	old_v = true
 end
 if not (fs.exists("lib/manifest.json")) then
-	m = fs.open("lib/manifest.json", "w")
-	m.write(textutils.serialiseJSON(libTable))
-	m.close()
+	print("Installing...")
 	old_v = true
+else
+	--load er up
+	local mfile = fs.open("lib/manifest.json", "r")
+	libTable = textutils.unserializeJSON(mfile.readAll())
 end
 
 function update()

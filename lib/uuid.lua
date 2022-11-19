@@ -1,4 +1,4 @@
-
+-- [uuid]
 -- Universal Unique ID ; snowflakes
 
 local seedSalt = ((os.epoch("utc") / 1000 ) % 1087) + 857 -- Make sure each seed is different from the last, and that each init has a different first seedSalt

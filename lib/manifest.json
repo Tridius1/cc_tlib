@@ -1,1 +1,1 @@
-{"gps":"lib/gps.lua","uuid":"lib/uuid.lua","time":"lib/time.lua","monitor":"lib/monitor.lua","move":"lib/move.lua"}
+{"gps": "gps.lua", "monitor": "monitor.lua", "move": "move.lua", "net": "net.lua", "time": "time.lua", "util": "util.lua", "uuid": "uuid.lua"}

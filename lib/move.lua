@@ -1,3 +1,4 @@
+-- [move]
 --Movement
 
 local function go_fwd(x)

@@ -1,3 +1,4 @@
+-- [net]
 -- Networking
 
 local defaultChannel = 100
