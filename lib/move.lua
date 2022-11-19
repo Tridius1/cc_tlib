@@ -22,6 +22,13 @@ local function go_fwd(x)
 	end
 end
 
+local function clearUp()
+    while( turtle.detectUp() )
+    do
+        turtle.digUp()
+    end
+end
+
 
 local function rect(x, y)
 	-- x if forward, y is right
@@ -107,6 +114,7 @@ end
 -- return module
 local modTable = {
 	go = go_fwd,
+	clearUp = clearUp,
 	rect = rect,
 	empty = empty,
 	emptyUp = emptyUp,
