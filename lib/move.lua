@@ -2,6 +2,10 @@
 --Movement
 
 local function go_fwd(x)
+	local x = x or 1
+	x = tonumber(x)
+	if (x < 1) then
+		error("go_fwd(x): x must be more than 0")
 	for i = 1, x, 1 do
 		local trys = 0
 		while not turtle.forward() do
