@@ -51,8 +51,12 @@ function update()
 		print("http get failed: manifest")
 		error(e)
 	end
+	manifestJSON = request.readAll()
+	libTable = textutils.unserializeJSON(manifestJSON)
+	mfile = fs.open("lib/manifest.json", "w")
+	mfile.write(manifestJSON)
+	mfile.close()
 
-	libTable = textutils.unserializeJSON(request.readAll())
 	-- library files
 	for k,v in pairs(libTable) do
 		print("Downloading "..k.." module to "..v)
@@ -86,6 +90,9 @@ local function loadModules(lib)
 	return modules
 end
 
+
+-- ###  MAIN ###
+
 if (arg[1] == "u" or arg[1] == "update") then
 	update()
 elseif (old_v) then
@@ -97,5 +104,6 @@ if success then
 	return modules
 else
 	print("Error loading tlib libraries, update required")
+	print(modules)
 	return
 end
