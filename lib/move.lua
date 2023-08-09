@@ -1,7 +1,7 @@
 -- [move]
 --Movement
 
-local function go_fwd(x)
+local function fwd(x)
 	local x = x or 1
 	x = tonumber(x)
 	if (x < 1) then
