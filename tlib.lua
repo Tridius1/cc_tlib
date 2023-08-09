@@ -63,10 +63,10 @@ function update()
 			error(e)
 		end
 		data = request.readAll()
-		if fs.exists(download.name) then
-			fs.delete(download.name)
+		if fs.exists("lib/" .. download.name) then
+			fs.delete("lib/" .. download.name)
 		end
-		file = fs.open(download.name, "w")
+		file = fs.open("lib/" .. download.name, "w")
 		file.write(data)
 		file.close()
 	end
