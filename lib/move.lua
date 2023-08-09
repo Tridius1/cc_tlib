@@ -119,7 +119,7 @@ end
 
 -- return module
 local modTable = {
-	go = go_fwd,
+	go = fwd,
 	clearUp = clearUp,
 	rect = rect,
 	empty = empty,
