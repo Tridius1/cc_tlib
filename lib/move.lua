@@ -5,7 +5,8 @@ local function go_fwd(x)
 	local x = x or 1
 	x = tonumber(x)
 	if (x < 1) then
-		error("go_fwd(x): x must be more than 0") end
+		error("go_fwd(x): x must be more than 0")
+	end
 	for i = 1, x, 1 do
 		local trys = 0
 		while not turtle.forward() do
@@ -14,7 +15,7 @@ local function go_fwd(x)
 					if turtle.getFuelLevel() == 0 then
 						error("Out of fuel")
 					else
-						if trys < 25 then
+						if trys < 5 then
 							trys = trys + 1
 							print("go_fwd() try " .. trys .. " failed")
 						else

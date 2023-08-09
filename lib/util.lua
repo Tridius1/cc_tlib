@@ -76,6 +76,6 @@ end
 return {
 	formatNum = formatNum,
 	getPeri = getPeri,
-	leadZero = leadZero
+	leadZero = leadZero,
 	printTable = printTable
 }
