@@ -73,9 +73,11 @@ end
 
 
 
-return {
+modtable = {
 	formatNum = formatNum,
 	getPeri = getPeri,
 	leadZero = leadZero,
 	printTable = printTable
 }
+
+return modtable
